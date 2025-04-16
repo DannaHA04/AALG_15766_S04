@@ -1,0 +1,53 @@
+
+Lista = [10,15,20,25,30,35,40,45,50]
+
+# Función de búsqueda binaria iterativa
+def busqueda_binaria_iterativa(lista, objetivo):
+
+    izquierda = 0
+    derecha = len(lista) - 1
+
+    while izquierda <= derecha:
+
+        medio = izquierda + (derecha - izquierda) // 2
+
+        if lista[medio] == objetivo:
+            return medio
+
+        elif lista[medio] < objetivo:
+            izquierda = medio + 1
+
+        else:
+            derecha = medio - 1
+
+    return -1
+
+numero_a_buscar = 25 
+resultado = busqueda_binaria_iterativa(Lista, numero_a_buscar)
+
+if resultado != -1:
+    print(f"Iterativa: El número {numero_a_buscar} fue encontrado en la posición {resultado}")
+else:
+    print(f"Iterativa: El número {numero_a_buscar} no fue encontrado en la lista")
+
+
+# Función de búsqueda recursiva
+def busqueda_recursiva(lista, objetivo, indice=0):
+
+    if indice >= len(lista):
+        return -1  # No se encontró
+
+    # Si el numero al que buscamos esta en la lista
+    if lista[indice] == objetivo:
+        return indice  # Retorna la posición
+
+    return busqueda_recursiva(lista, objetivo, indice + 1)
+
+numero_a_buscar = 25
+resultado = busqueda_recursiva(Lista, numero_a_buscar)
+
+
+if resultado != -1:
+    print(f"Recursiva: El número {numero_a_buscar} fue encontrado en la posición {resultado}")
+else:
+    print(f"Recursiva: El número {numero_a_buscar} no fue encontrado en la lista")
